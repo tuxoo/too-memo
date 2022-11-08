@@ -1,0 +1,95 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:layout_marginHorizontal="48dp"
+    android:layout_marginVertical="16dp"
+    android:background="@drawable/item_mark_shape">
+
+    <TextView
+        android:id="@+id/subTopicNameTextView"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginHorizontal="32dp"
+        android:layout_marginVertical="16dp"
+        android:ellipsize="end"
+        android:lines="1"
+        android:textColor="@color/black"
+        android:textSize="32sp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        tools:text="Flavours" />
+
+    <View
+        android:id="@+id/marksBorder"
+        android:layout_width="match_parent"
+        android:layout_height="1dp"
+        android:layout_marginHorizontal="32dp"
+        android:background="@color/black_Alpha_200"
+        app:layout_constraintBottom_toTopOf="@+id/subTopicDescriptionTextView"
+        app:layout_constraintTop_toBottomOf="@+id/subTopicNameTextView"
+        tools:layout_editor_absoluteX="4dp" />
+
+    <TextView
+        android:id="@+id/subTopicDescriptionTextView"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_margin="16dp"
+        android:textColor="@color/black"
+        android:textSize="16sp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/subTopicNameTextView"
+        tools:text="It's an important thing..." />
+
+    <TextView
+        android:id="@+id/editedAtSubTopicTextView"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_margin="16dp"
+        android:textSize="12sp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toStartOf="@+id/editSubTopicImageViewButton"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/subTopicDescriptionTextView"
+        tools:text="22 September 2022" />
+
+    <ImageView
+        android:id="@+id/editSubTopicImageViewButton"
+        android:layout_width="50dp"
+        android:layout_height="50dp"
+        android:layout_margin="16dp"
+        android:background="?android:selectableItemBackgroundBorderless"
+        android:contentDescription="@string/more_image"
+        android:src="@drawable/ic_edit"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toStartOf="@+id/deleteSubTopicImageViewButton"
+        app:layout_constraintTop_toBottomOf="@+id/subTopicDescriptionTextView" />
+
+    <ImageView
+        android:id="@+id/deleteSubTopicImageViewButton"
+        android:layout_width="50dp"
+        android:layout_height="50dp"
+        android:layout_margin="16dp"
+        android:background="?android:selectableItemBackgroundBorderless"
+        android:contentDescription="@string/more_image"
+        android:src="@drawable/ic_delete"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/subTopicDescriptionTextView" />
+
+    <androidx.constraintlayout.widget.Barrier
+        android:id="@+id/barrier"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:barrierDirection="bottom"
+        app:constraint_referenced_ids="deleteSubTopicImageViewButton"
+        tools:layout_editor_absoluteY="116dp" />
+
+    <Space
+        android:layout_width="wrap_content"
+        android:layout_height="6dp"
+        app:layout_constraintTop_toBottomOf="@id/barrier" />
+
+</androidx.constraintlayout.widget.ConstraintLayout>
