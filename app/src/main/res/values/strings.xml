@@ -1,5 +1,15 @@
 <resources>
     <string name="app_name">too-memo</string>
+
+    <string name="home">Home</string>
+    <string name="memo">Memo</string>
+    <string name="topics">Topics</string>
+    <string name="library">Library</string>
+    <string name="gallery">Gallery</string>
+    <string name="profile">Profile</string>
+    <string name="about">About</string>
+    <string name="login">Log In</string>
+
     <string name="open">Open Navigation Drawer</string>
     <string name="close">Close Navigation Drawer</string>
 </resources>

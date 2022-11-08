@@ -8,6 +8,7 @@
     tools:context=".MainActivity">
 
     <com.google.android.material.navigation.NavigationView
+        app:itemTextAppearance="@style/Theme.Menu"
         android:id="@+id/navigation"
         android:layout_width="wrap_content"
         android:layout_height="match_parent"

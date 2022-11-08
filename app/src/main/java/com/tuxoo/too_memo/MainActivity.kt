@@ -8,7 +8,6 @@ import androidx.appcompat.app.AppCompatActivity
 import androidx.drawerlayout.widget.DrawerLayout
 import com.google.android.material.navigation.NavigationView
 import com.tuxoo.too_memo.databinding.ActivityMainBinding
-import com.tuxoo.too_memo.screen.TopicsFragment
 
 class MainActivity : AppCompatActivity() {
 
@@ -40,7 +39,7 @@ class MainActivity : AppCompatActivity() {
         navigation.setNavigationItemSelectedListener {
             when (it.itemId) {
                 R.id.home -> Toast.makeText(this, "Home Selected", Toast.LENGTH_SHORT).show()
-                R.id.contact -> Toast.makeText(this, "Contact Selected", Toast.LENGTH_SHORT).show()
+                R.id.topics -> Toast.makeText(this, "Topics Selected", Toast.LENGTH_SHORT).show()
                 R.id.about -> Toast.makeText(this, "About Selected", Toast.LENGTH_SHORT).show()
                 R.id.login -> Toast.makeText(this, "Login Selected", Toast.LENGTH_SHORT).show()
             }
