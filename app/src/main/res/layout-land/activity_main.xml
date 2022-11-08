@@ -11,8 +11,7 @@
         android:id="@+id/fragmentContainer"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        tools:layout="@layout/fragment_home"
-        />
+        tools:layout="@layout/fragment_notes"/>
 
     <com.google.android.material.navigation.NavigationView
         android:id="@+id/navigation"
