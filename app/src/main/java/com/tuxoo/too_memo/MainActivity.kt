@@ -39,7 +39,7 @@ class MainActivity : AppCompatActivity() {
         navigation.setNavigationItemSelectedListener {
             when (it.itemId) {
                 R.id.home -> Toast.makeText(this, "Home Selected", Toast.LENGTH_SHORT).show()
-                R.id.topics -> Toast.makeText(this, "Topics Selected", Toast.LENGTH_SHORT).show()
+                R.id.notes -> Toast.makeText(this, "Topics Selected", Toast.LENGTH_SHORT).show()
                 R.id.about -> Toast.makeText(this, "About Selected", Toast.LENGTH_SHORT).show()
                 R.id.login -> Toast.makeText(this, "Login Selected", Toast.LENGTH_SHORT).show()
             }

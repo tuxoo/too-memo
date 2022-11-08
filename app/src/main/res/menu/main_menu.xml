@@ -10,9 +10,9 @@
     <item android:title="@string/memo">
         <menu>
             <item
-                android:id="@+id/topics"
+                android:id="@+id/notes"
                 android:icon="@drawable/ic_topics"
-                android:title="@string/topics" />
+                android:title="@string/notes" />
             <item
                 android:id="@+id/library"
                 android:icon="@drawable/ic_library"

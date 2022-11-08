@@ -45,8 +45,12 @@ dependencies {
     implementation ("androidx.appcompat:appcompat:1.5.1")
     implementation ("com.google.android.material:material:1.7.0")
     implementation ("androidx.constraintlayout:constraintlayout:2.1.4")
+    implementation ("com.google.dagger:dagger:2.44")
+    implementation ("androidx.room:room-runtime:2.4.3")
+    implementation ("androidx.room:room-ktx:2.4.3")
 
     kapt ("com.google.dagger:dagger-compiler:2.44")
+    kapt ("androidx.room:room-compiler:2.4.3")
 
     testImplementation ("junit:junit:4.13.2")
 
