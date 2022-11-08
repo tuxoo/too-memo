@@ -1,13 +1,17 @@
 package com.tuxoo.too_memo
 
 import android.os.Bundle
+import android.util.Log
 import android.view.MenuItem
 import android.widget.Toast
 import androidx.appcompat.app.ActionBarDrawerToggle
 import androidx.appcompat.app.AppCompatActivity
 import androidx.drawerlayout.widget.DrawerLayout
+import androidx.fragment.app.Fragment
 import com.google.android.material.navigation.NavigationView
 import com.tuxoo.too_memo.databinding.ActivityMainBinding
+import com.tuxoo.too_memo.screen.home.HomeFragment
+import com.tuxoo.too_memo.screen.notes.NotesFragment
 
 class MainActivity : AppCompatActivity() {
 
@@ -19,8 +23,7 @@ class MainActivity : AppCompatActivity() {
     override fun onOptionsItemSelected(item: MenuItem): Boolean =
         if (drawerToggle.onOptionsItemSelected(item)) {
             true
-        }
-        else {
+        } else {
             super.onOptionsItemSelected(item)
         }
 
@@ -49,8 +52,15 @@ class MainActivity : AppCompatActivity() {
 //        if (savedInstanceState == null) {
 //            supportFragmentManager
 //                .beginTransaction()
-//                .add(R.id.fragmentContainer, TopicsFragment())
+//                .add(R.id.fragmentContainer, HomeFragment.newInstance())
 //                .commit()
 //        }
     }
+
+//    private fun launchFragment(fragment: Fragment) {
+//        supportFragmentManager
+//            .beginTransaction()
+//            .replace(R.id.fragmentContainer, fragment)
+//            .commit()
+//    }
 }

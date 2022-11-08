@@ -4,4 +4,5 @@ data class Topic(
     val id: Long,
     val name: String,
     val createdAt: String,
+    val isPinned: Boolean,
 )

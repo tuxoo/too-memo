@@ -14,11 +14,13 @@ data class TopicEntity(
     @PrimaryKey(autoGenerate = true) val id: Long,
     val name: String,
     @ColumnInfo(name = "created_at") val createdAt: Long,
+    @ColumnInfo(name = "is_pinned") val isPinned: Boolean,
 ) {
     fun toTopic(): Topic = Topic(
         id = id,
         name = name,
         createdAt = dateFormatter.format(Instant.ofEpochMilli(createdAt)),
+        isPinned = isPinned
     )
 
     companion object {
