@@ -11,6 +11,7 @@
             <solid android:color="@color/white"/>
         </shape>
     </item>
+
     <item>
         <shape>
             <corners android:radius="16dp" />
@@ -22,6 +23,7 @@
             <solid android:color="@color/black_Alpha_50"/>
         </shape>
     </item>
+
     <item>
         <shape>
             <corners android:radius="16dp" />
@@ -33,6 +35,7 @@
             <solid android:color="@color/black_Alpha_100"/>
         </shape>
     </item>
+
     <item>
         <shape>
             <corners android:radius="16dp" />
@@ -42,17 +45,6 @@
                 android:bottom="1dp"
                 android:left="1dp"/>
             <solid android:color="@color/black_Alpha_200"/>
-        </shape>
-    </item>
-    <item>
-        <shape>
-            <corners android:radius="16dp" />
-            <padding
-                android:top="1dp"
-                android:right="1dp"
-                android:bottom="1dp"
-                android:left="1dp"/>
-            <solid android:color="@color/black_Alpha_300"/>
         </shape>
     </item>
 
