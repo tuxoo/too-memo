@@ -5,7 +5,6 @@ import androidx.room.Entity
 import androidx.room.ForeignKey
 import androidx.room.PrimaryKey
 import com.tuxoo.too_memo.model.notes.entity.Note
-import com.tuxoo.too_memo.model.topics.entity.Topic
 import com.tuxoo.too_memo.model.topics.room.entity.TopicEntity
 import java.time.Instant
 
@@ -35,6 +34,7 @@ data class NoteEntity(
         title = title,
         description = description,
         createdAt = Instant.ofEpochSecond(createdAt),
-        lastModified = Instant.ofEpochSecond(lastModified)
+        lastModified = Instant.ofEpochSecond(lastModified),
+        topicId = topicId,
     )
 }

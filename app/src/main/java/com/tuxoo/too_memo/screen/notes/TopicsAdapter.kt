@@ -77,8 +77,7 @@ class TopicsAdapter(
             topicNameTextView.text = topic.name
             createdAtTopicTextView.text = dateFormatter.format(topic.createdAt)
 
-            pinImageView.visibility = if (topic.isPinned) View.VISIBLE
-            else View.INVISIBLE
+            pinImageView.visibility = if (topic.isPinned) View.VISIBLE else View.INVISIBLE
         }
     }
 

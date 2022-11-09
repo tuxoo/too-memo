@@ -18,4 +18,6 @@ class RoomNotesRepository(
             }
         }
 
+    override suspend fun delete(note: Note) =
+        notesDao.delete(note.toEntity())
 }

@@ -5,9 +5,10 @@ import androidx.lifecycle.viewModelScope
 import com.tuxoo.too_memo.model.notes.NotesRepository
 import com.tuxoo.too_memo.model.notes.entity.Note
 import com.tuxoo.too_memo.model.topics.entity.Topic
-import kotlinx.coroutines.flow.MutableStateFlow
-import kotlinx.coroutines.flow.StateFlow
+import kotlinx.coroutines.Dispatchers
+import kotlinx.coroutines.flow.*
 import kotlinx.coroutines.launch
+import kotlinx.coroutines.withContext
 
 class NotesViewModel(
     private val notesRepository: NotesRepository
@@ -18,7 +19,28 @@ class NotesViewModel(
 
     fun getByTopic(topic: Topic) {
         viewModelScope.launch {
-            notesRepository.getByTopic(topic).collect {
+            // TODO: exception
+            notesRepository.getByTopic(topic)
+                .flowOn(Dispatchers.IO)
+                .collect {
+                    _notes.value = it
+                }
+        }
+    }
+
+    fun deleteNote(note: Note) {
+        viewModelScope.launch {
+            withContext(Dispatchers.IO) {
+                notesRepository.delete(note)
+            }
+        }
+    }
+
+    fun sortByAlphabet() {
+        viewModelScope.launch {
+            notes.map {
+                it.sortedBy { note -> note.title }
+            }.collect {
                 _notes.value = it
             }
         }

@@ -7,4 +7,6 @@ import kotlinx.coroutines.flow.Flow
 interface NotesRepository {
 
     suspend fun getByTopic(topic: Topic): Flow<List<Note>>
+
+    suspend fun delete(note: Note)
 }

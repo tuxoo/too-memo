@@ -6,9 +6,12 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
-import androidx.lifecycle.viewModelScope
+import androidx.lifecycle.Lifecycle
+import androidx.lifecycle.lifecycleScope
+import androidx.lifecycle.repeatOnLifecycle
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.tuxoo.too_memo.databinding.FragmentNotesBinding
+import com.tuxoo.too_memo.model.notes.entity.Note
 import com.tuxoo.too_memo.model.topics.entity.Topic
 import com.tuxoo.too_memo.util.ViewModelFactory
 import com.tuxoo.too_memo.util.appComponent
@@ -56,25 +59,37 @@ class NotesFragment : Fragment() {
             }
         })
 
-        notesAdapter = NotesAdapter()
+        notesAdapter = NotesAdapter(object : NoteActionListener {
+            override fun onNoteDelete(note: Note) {
+                notesViewModel.deleteNote(note)
+            }
+        })
 
-        topicsViewModel.viewModelScope.launch {
-            topicsViewModel.topics.collect {
-                topicsAdapter.topics = it
+        viewLifecycleOwner.lifecycleScope.launch {
+            repeatOnLifecycle(Lifecycle.State.STARTED) {
+                topicsViewModel.topics.collect {
+                    topicsAdapter.topics = it
+                }
             }
         }
 
         binding.topicsRecyclerView.layoutManager = LinearLayoutManager(requireContext())
         binding.topicsRecyclerView.adapter = topicsAdapter
 
-        notesViewModel.viewModelScope.launch {
-            notesViewModel.notes.collect {
-                notesAdapter.notes = it
+        viewLifecycleOwner.lifecycleScope.launch {
+            repeatOnLifecycle(Lifecycle.State.STARTED) {
+                notesViewModel.notes.collect {
+                    notesAdapter.notes = it
+                }
             }
         }
 
         binding.notesRecyclerView.layoutManager = LinearLayoutManager(requireContext())
         binding.notesRecyclerView.adapter = notesAdapter
+
+        binding.sortNotesImageViewButton.setOnClickListener {
+            notesViewModel.sortByAlphabet()
+        }
 
         return binding.root
     }
