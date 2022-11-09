@@ -10,4 +10,6 @@ interface TopicsRepository {
     suspend fun add(topic: Topic)
 
     suspend fun delete(topic: Topic)
+
+    suspend fun update(topic: Topic)
 }

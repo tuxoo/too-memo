@@ -23,4 +23,8 @@ class RoomTopicsRepository(
     override suspend fun delete(topic: Topic) {
         topicsDao.delete(topic.toTopicEntity())
     }
+
+    override suspend fun update(topic: Topic) {
+        topicsDao.update(topic.toTopicEntity())
+    }
 }

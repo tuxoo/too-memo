@@ -6,6 +6,7 @@ import com.tuxoo.too_memo.model.topics.TopicsRepository
 import com.tuxoo.too_memo.model.topics.entity.Topic
 import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.StateFlow
+import kotlinx.coroutines.isActive
 import kotlinx.coroutines.launch
 
 class NotesViewModel(
@@ -23,9 +24,16 @@ class NotesViewModel(
         }
     }
 
-    fun delete(topic: Topic) {
+    fun deleteTopic(topic: Topic) {
         viewModelScope.launch {
             topicsRepository.delete(topic)
+        }
+    }
+
+    fun pinTopic(topic: Topic, pin: Boolean) {
+        viewModelScope.launch {
+            val pinnedTopic = topic.copy(isPinned = pin)
+            topicsRepository.update(pinnedTopic)
         }
     }
 }

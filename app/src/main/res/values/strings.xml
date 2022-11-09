@@ -20,5 +20,6 @@
     <string name="more_image">More Image</string>
 
     <string name="pin">Pin</string>
+    <string name="unpin">Unpin</string>
     <string name="delete">Delete</string>
 </resources>

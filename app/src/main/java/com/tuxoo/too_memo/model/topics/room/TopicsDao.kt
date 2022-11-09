@@ -1,9 +1,6 @@
 package com.tuxoo.too_memo.model.topics.room
 
-import androidx.room.Dao
-import androidx.room.Delete
-import androidx.room.Insert
-import androidx.room.Query
+import androidx.room.*
 import com.tuxoo.too_memo.model.topics.room.entity.TopicEntity
 import kotlinx.coroutines.flow.Flow
 
@@ -18,4 +15,7 @@ interface TopicsDao {
 
     @Delete
     suspend fun delete(topic: TopicEntity)
+
+    @Update
+    suspend fun update(topic: TopicEntity)
 }

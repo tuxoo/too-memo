@@ -39,11 +39,12 @@ class NotesFragment : Fragment() {
 
         topicsAdapter = TopicsAdapter(object : TopicActionListener {
             override fun onTopicPinned(topic: Topic) {
-
+                if (topic.isPinned) viewModel.pinTopic(topic, false)
+                else viewModel.pinTopic(topic, true)
             }
 
             override fun onTopicDelete(topic: Topic) {
-                viewModel.delete(topic)
+                viewModel.deleteTopic(topic)
             }
 
             override fun onTopicNotes(topic: Topic) {

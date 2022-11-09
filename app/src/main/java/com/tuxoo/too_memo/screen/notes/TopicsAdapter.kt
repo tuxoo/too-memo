@@ -88,7 +88,12 @@ class TopicsAdapter(
         val context = v.context
         val topic = v.tag as Topic
 
-        popupMenu.menu.add(0, ID_PIN, Menu.NONE, context.getString(R.string.pin))
+        if (topic.isPinned) {
+            popupMenu.menu.add(0, ID_PIN, Menu.NONE, context.getString(R.string.unpin))
+        } else {
+            popupMenu.menu.add(0, ID_PIN, Menu.NONE, context.getString(R.string.pin))
+        }
+
         popupMenu.menu.add(0, ID_DELETE, Menu.NONE, context.getString(R.string.delete))
 
         popupMenu.setOnMenuItemClickListener {
