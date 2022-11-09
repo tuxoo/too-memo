@@ -16,5 +16,6 @@
     <string name="close">Close Navigation Drawer</string>
 
     <string name="topic_image">Topic Image</string>
+    <string name="pin_image">Pin Image</string>
     <string name="more_image">More Image</string>
 </resources>

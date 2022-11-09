@@ -6,14 +6,25 @@
     android:layout_height="wrap_content">
 
     <ImageView
+        android:id="@+id/pinImageView"
+        android:layout_width="24dp"
+        android:layout_height="24dp"
+        android:layout_margin="16dp"
+        android:contentDescription="@string/pin_image"
+        app:layout_constraintBottom_toBottomOf="@+id/topicImageView"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        tools:src="@drawable/ic_pin" />
+
+    <ImageView
         android:id="@+id/topicImageView"
         android:layout_width="100dp"
         android:layout_height="100dp"
-        android:layout_margin="16dp"
+        android:layout_margin="8dp"
         android:contentDescription="@string/topic_image"
-        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintStart_toEndOf="@+id/pinImageView"
         app:layout_constraintTop_toTopOf="parent"
-        tools:src="@drawable/ic_image_topic" />
+        android:src="@drawable/ic_image_topic" />
 
     <TextView
         android:id="@+id/topicNameTextView"

@@ -3,6 +3,8 @@ package com.tuxoo.too_memo.dependency
 import android.content.Context
 import androidx.room.Room
 import com.tuxoo.too_memo.model.room.AppDatabase
+import com.tuxoo.too_memo.model.topics.TopicsRepository
+import com.tuxoo.too_memo.model.topics.room.RoomTopicsRepository
 import dagger.Module
 import dagger.Provides
 import javax.inject.Singleton
@@ -18,6 +20,11 @@ class DatabaseModule {
         Room.databaseBuilder(context, AppDatabase::class.java, DB_NAME)
             .createFromAsset(ASSET_FILE)
             .build()
+
+    @Provides
+    @Singleton
+    fun provideTopicsRepository(database: AppDatabase): TopicsRepository =
+        RoomTopicsRepository(database.getTopicsDao())
 
     companion object {
         private const val DB_NAME = "too_memo"

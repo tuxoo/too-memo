@@ -7,7 +7,7 @@ import androidx.room.PrimaryKey
 import com.tuxoo.too_memo.model.topics.room.entity.TopicEntity
 
 @Entity(
-    tableName = "note",
+    tableName = "notes",
     foreignKeys = [
         ForeignKey(
             entity = TopicEntity::class,
