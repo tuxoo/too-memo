@@ -55,7 +55,7 @@ class MainActivity : AppCompatActivity() {
             }
 
             drawerLayout.closeDrawer(GravityCompat.START)
-            false
+            return@setNavigationItemSelectedListener false
         }
     }
 

@@ -3,28 +3,30 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
-    android:layout_height="wrap_content">
+    android:layout_height="wrap_content"
+    android:background="?android:selectableItemBackground">
 
     <ImageView
         android:id="@+id/pinImageView"
         android:layout_width="24dp"
         android:layout_height="24dp"
-        android:layout_margin="16dp"
+        android:layout_marginStart="16dp"
         android:contentDescription="@string/pin_image"
+        android:src="@drawable/ic_pin"
+        android:visibility="invisible"
         app:layout_constraintBottom_toBottomOf="@+id/topicImageView"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        tools:src="@drawable/ic_pin" />
+        app:layout_constraintTop_toTopOf="parent" />
 
     <ImageView
         android:id="@+id/topicImageView"
         android:layout_width="100dp"
         android:layout_height="100dp"
-        android:layout_margin="8dp"
+        android:layout_marginVertical="8dp"
         android:contentDescription="@string/topic_image"
+        android:src="@drawable/ic_image_topic"
         app:layout_constraintStart_toEndOf="@+id/pinImageView"
-        app:layout_constraintTop_toTopOf="parent"
-        android:src="@drawable/ic_image_topic" />
+        app:layout_constraintTop_toTopOf="parent" />
 
     <TextView
         android:id="@+id/topicNameTextView"
@@ -47,13 +49,13 @@
         android:ellipsize="end"
         android:lines="1"
         android:textSize="14sp"
-        app:layout_constraintEnd_toStartOf="@id/addTopicImageViewButton"
+        app:layout_constraintEnd_toStartOf="@id/moreImageViewButton"
         app:layout_constraintStart_toStartOf="@id/topicNameTextView"
         app:layout_constraintTop_toBottomOf="@id/topicNameTextView"
         tools:text="created at" />
 
     <ImageView
-        android:id="@+id/addTopicImageViewButton"
+        android:id="@+id/moreImageViewButton"
         android:layout_width="50dp"
         android:layout_height="50dp"
         android:layout_marginEnd="16dp"

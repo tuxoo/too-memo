@@ -9,7 +9,7 @@ import kotlinx.coroutines.flow.StateFlow
 import kotlinx.coroutines.launch
 
 class NotesViewModel(
-    topicsRepository: TopicsRepository
+    private val topicsRepository: TopicsRepository
 ) : ViewModel() {
 
     private val _topics = MutableStateFlow<List<Topic>>(emptyList())
@@ -20,6 +20,12 @@ class NotesViewModel(
             topicsRepository.getAll().collect {
                 _topics.value = it
             }
+        }
+    }
+
+    fun delete(topic: Topic) {
+        viewModelScope.launch {
+            topicsRepository.delete(topic)
         }
     }
 }

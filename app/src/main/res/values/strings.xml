@@ -18,4 +18,7 @@
     <string name="topic_image">Topic Image</string>
     <string name="pin_image">Pin Image</string>
     <string name="more_image">More Image</string>
+
+    <string name="pin">Pin</string>
+    <string name="delete">Delete</string>
 </resources>

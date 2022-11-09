@@ -8,4 +8,6 @@ interface TopicsRepository {
     suspend fun getAll(): Flow<List<Topic>>
 
     suspend fun add(topic: Topic)
+
+    suspend fun delete(topic: Topic)
 }

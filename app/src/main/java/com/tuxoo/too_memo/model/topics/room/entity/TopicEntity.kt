@@ -5,8 +5,6 @@ import androidx.room.Entity
 import androidx.room.PrimaryKey
 import com.tuxoo.too_memo.model.topics.entity.Topic
 import java.time.Instant
-import java.time.ZoneId
-import java.time.format.DateTimeFormatter
 
 @Entity(
     tableName = "topics"
@@ -20,14 +18,14 @@ data class TopicEntity(
     fun toTopic(): Topic = Topic(
         id = id,
         name = name,
-        createdAt = dateFormatter.format(Instant.ofEpochSecond(createdAt)),
+        createdAt = Instant.ofEpochSecond(createdAt),
         isPinned = toBool(isPinned)
     )
 
     companion object {
-        private const val formatPattern = "d MMM yyyy"
-        private val dateFormatter = DateTimeFormatter.ofPattern(formatPattern).withZone(ZoneId.systemDefault())
 
-        private fun toBool(isPinned: Int): Boolean = isPinned == 1
+        fun toBool(isPinned: Int): Boolean = isPinned == 1
+
+        fun fromBool(isPinned: Boolean): Int = if (isPinned) 1 else 0
     }
 }

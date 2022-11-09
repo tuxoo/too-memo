@@ -19,4 +19,8 @@ class RoomTopicsRepository(
     override suspend fun add(topic: Topic) {
         TODO("Not yet implemented")
     }
+
+    override suspend fun delete(topic: Topic) {
+        topicsDao.delete(topic.toTopicEntity())
+    }
 }
