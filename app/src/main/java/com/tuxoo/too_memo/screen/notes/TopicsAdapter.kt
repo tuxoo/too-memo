@@ -10,8 +10,7 @@ import androidx.recyclerview.widget.RecyclerView
 import com.tuxoo.too_memo.R
 import com.tuxoo.too_memo.databinding.ItemTopicBinding
 import com.tuxoo.too_memo.model.topics.entity.Topic
-import java.time.ZoneId
-import java.time.format.DateTimeFormatter
+import com.tuxoo.too_memo.util.DateTimeUtil.dateFormatter
 
 interface TopicActionListener {
 
@@ -114,9 +113,5 @@ class TopicsAdapter(
     companion object {
         private const val ID_PIN = 1
         private const val ID_DELETE = 2
-
-        private const val formatPattern = "d MMM yyyy"
-        val dateFormatter: DateTimeFormatter =
-            DateTimeFormatter.ofPattern(formatPattern).withZone(ZoneId.systemDefault())
     }
 }

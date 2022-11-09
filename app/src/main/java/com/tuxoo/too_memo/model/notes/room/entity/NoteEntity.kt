@@ -4,7 +4,10 @@ import androidx.room.ColumnInfo
 import androidx.room.Entity
 import androidx.room.ForeignKey
 import androidx.room.PrimaryKey
+import com.tuxoo.too_memo.model.notes.entity.Note
+import com.tuxoo.too_memo.model.topics.entity.Topic
 import com.tuxoo.too_memo.model.topics.room.entity.TopicEntity
+import java.time.Instant
 
 @Entity(
     tableName = "notes",
@@ -25,4 +28,13 @@ data class NoteEntity(
     @ColumnInfo(name = "created_at") val createdAt: Long,
     @ColumnInfo(name = "last_modified") val lastModified: Long,
     @ColumnInfo(name = "topic_id") val topicId: Long,
-)
+) {
+
+    fun toNote(): Note = Note(
+        id = id,
+        title = title,
+        description = description,
+        createdAt = Instant.ofEpochSecond(createdAt),
+        lastModified = Instant.ofEpochSecond(lastModified)
+    )
+}

@@ -2,38 +2,25 @@ package com.tuxoo.too_memo.screen.notes
 
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
-import com.tuxoo.too_memo.model.topics.TopicsRepository
+import com.tuxoo.too_memo.model.notes.NotesRepository
+import com.tuxoo.too_memo.model.notes.entity.Note
 import com.tuxoo.too_memo.model.topics.entity.Topic
 import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.StateFlow
-import kotlinx.coroutines.isActive
 import kotlinx.coroutines.launch
 
 class NotesViewModel(
-    private val topicsRepository: TopicsRepository
+    private val notesRepository: NotesRepository
 ) : ViewModel() {
 
-    private val _topics = MutableStateFlow<List<Topic>>(emptyList())
-    val topics: StateFlow<List<Topic>> = _topics
+    private val _notes = MutableStateFlow<List<Note>>(emptyList())
+    val notes: StateFlow<List<Note>> = _notes
 
-    init {
+    fun getByTopic(topic: Topic) {
         viewModelScope.launch {
-            topicsRepository.getAll().collect {
-                _topics.value = it
+            notesRepository.getByTopic(topic).collect {
+                _notes.value = it
             }
-        }
-    }
-
-    fun deleteTopic(topic: Topic) {
-        viewModelScope.launch {
-            topicsRepository.delete(topic)
-        }
-    }
-
-    fun pinTopic(topic: Topic, pin: Boolean) {
-        viewModelScope.launch {
-            val pinnedTopic = topic.copy(isPinned = pin)
-            topicsRepository.update(pinnedTopic)
         }
     }
 }

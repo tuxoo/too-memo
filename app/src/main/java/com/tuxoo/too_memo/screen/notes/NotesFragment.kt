@@ -4,7 +4,6 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.Toast
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
 import androidx.lifecycle.viewModelScope
@@ -20,11 +19,16 @@ class NotesFragment : Fragment() {
 
     private lateinit var binding: FragmentNotesBinding
     private lateinit var topicsAdapter: TopicsAdapter
+    private lateinit var notesAdapter: NotesAdapter
 
     @Inject
     lateinit var viewModelFactory: ViewModelFactory
 
-    private val viewModel: NotesViewModel by viewModels {
+    private val topicsViewModel: TopicsViewModel by viewModels {
+        viewModelFactory
+    }
+
+    private val notesViewModel: NotesViewModel by viewModels {
         viewModelFactory
     }
 
@@ -39,31 +43,38 @@ class NotesFragment : Fragment() {
 
         topicsAdapter = TopicsAdapter(object : TopicActionListener {
             override fun onTopicPinned(topic: Topic) {
-                if (topic.isPinned) viewModel.pinTopic(topic, false)
-                else viewModel.pinTopic(topic, true)
+                if (topic.isPinned) topicsViewModel.pinTopic(topic, false)
+                else topicsViewModel.pinTopic(topic, true)
             }
 
             override fun onTopicDelete(topic: Topic) {
-                viewModel.deleteTopic(topic)
+                topicsViewModel.deleteTopic(topic)
             }
 
             override fun onTopicNotes(topic: Topic) {
-                Toast.makeText(
-                    this@NotesFragment.requireContext(),
-                    "Topic: ${topic.name}",
-                    Toast.LENGTH_SHORT
-                ).show()
+                notesViewModel.getByTopic(topic)
             }
         })
 
-        viewModel.viewModelScope.launch {
-            viewModel.topics.collect {
+        notesAdapter = NotesAdapter()
+
+        topicsViewModel.viewModelScope.launch {
+            topicsViewModel.topics.collect {
                 topicsAdapter.topics = it
             }
         }
 
         binding.topicsRecyclerView.layoutManager = LinearLayoutManager(requireContext())
         binding.topicsRecyclerView.adapter = topicsAdapter
+
+        notesViewModel.viewModelScope.launch {
+            notesViewModel.notes.collect {
+                notesAdapter.notes = it
+            }
+        }
+
+        binding.notesRecyclerView.layoutManager = LinearLayoutManager(requireContext())
+        binding.notesRecyclerView.adapter = notesAdapter
 
         return binding.root
     }

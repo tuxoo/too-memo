@@ -15,6 +15,7 @@ data class TopicEntity(
     @ColumnInfo(name = "created_at") val createdAt: Long,
     @ColumnInfo(name = "is_pinned") val isPinned: Int,
 ) {
+
     fun toTopic(): Topic = Topic(
         id = id,
         name = name,
